@@ -32,7 +32,7 @@ class StopWatch(QWidget):
         hbox.addWidget(self.stop_button)
         hbox.addWidget(self.reset_button)
 
-        vbox.addLayout(hbox)   #buttons arrange vertically with the time_label
+        vbox.addLayout(hbox)   
 
         self.setStyleSheet(""" 
             QPushButton, QLabel {
@@ -56,7 +56,7 @@ class StopWatch(QWidget):
         self.timer.timeout.connect(self.update_display)
 
     def start(self):
-        self.timer.start(10) # set an interval for timeout every 10ms
+        self.timer.start(10) 
 
     def stop(self):
         self.timer.stop()
@@ -74,7 +74,7 @@ class StopWatch(QWidget):
         return f"{hours:02}:{minutes:02}:{seconds:02}.{milliseconds:02}"
 
     def update_display(self):
-        self.time = self.time.addMSecs(10) # update time with 10 msec
+        self.time = self.time.addMSecs(10) 
         self.time_label.setText(self.format_time(self.time))
 
 
