@@ -1,7 +1,7 @@
 # Weather App
 # https://openweathermap.org/
 
-# API Key: 6ee3407c9d91eacfda32bfdf118ffe9e
+# API Key: {Register at website to get your own API Key}
 
 import sys
 import requests
@@ -77,8 +77,6 @@ class WeatherApp(QWidget):
 
         self.get_weather_button.clicked.connect(self.get_weather)
 
-    #precede ID with name of class so only applying these CSS to any ID -> QLabel#city_label
-
     def get_weather(self):
 
         api_key = "6ee3407c9d91eacfda32bfdf118ffe9e"
@@ -87,7 +85,7 @@ class WeatherApp(QWidget):
 
         try:
             response = requests.get(url)
-            response.raise_for_status()  #raise exception if any HTTP errors in try block
+            response.raise_for_status() 
             data = response.json()
 
             if data["cod"] == 200:
@@ -120,7 +118,7 @@ class WeatherApp(QWidget):
             self.display_error("Timeout Error:\nThe request timed out")
         except requests.exceptions.TooManyRedirects:
             self.display_error("Too many Redirects:\nCheck the URL")
-        except requests.exceptions.RequestException as req_error:  # due to network prob, invalid url
+        except requests.exceptions.RequestException as req_error:  
             self.display_error(f"Request Error:\n{req_error}")
 
     def display_error(self, message):
